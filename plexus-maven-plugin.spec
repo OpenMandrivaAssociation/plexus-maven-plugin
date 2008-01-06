@@ -37,7 +37,7 @@
 
 Name:           %{parent}-%{subname}
 Version:        1.2
-Release:        %mkrel 2.0.0
+Release:        %mkrel 2.0.1
 Epoch:          0
 Summary:        Plexus Maven plugin
 License:        Apache Software License
@@ -60,6 +60,7 @@ BuildRequires:	maven2-plugin-javadoc
 BuildRequires:	maven2-plugin-plugin
 BuildRequires:	maven2-plugin-resources
 BuildRequires:	maven2-plugin-surefire
+BuildRequires:  maven2-plugin-release
 BuildRequires:	maven2-common-poms >= 1.0
 BuildRequires:	plexus-appserver >= 1.0-0.a5.3
 BuildRequires:	plexus-cdc >= 1.0-0.a4.2
