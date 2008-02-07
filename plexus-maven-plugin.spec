@@ -1,4 +1,4 @@
-# Copyright (c) 2000-2005, JPackage Project
+# Copyright (c) 2000-2007, JPackage Project
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -36,16 +36,19 @@
 %define maven_settings_file %{_builddir}/%{name}/settings.xml
 
 Name:           %{parent}-%{subname}
-Version:        1.2
-Release:        %mkrel 2.0.1
+Version:        1.3.5
+Release:        %mkrel 1.0.1
 Epoch:          0
 Summary:        Plexus Maven plugin
 License:        Apache Software License
 Group:          Development/Java
 URL:            http://plexus.codehaus.org/
 Source0:        %{name}-src.tar.gz
-# svn export svn://svn.plexus.codehaus.org/plexus/tags/plexus-maven-plugin-1.2 plexus-maven-plugin
-Source1:		%{name}-jpp-depmap.xml
+# svn export http://svn.codehaus.org/plexus/plexus-maven-plugin/tags/plexus-maven-plugin-1.3.5
+
+Source1:        %{name}-jpp-depmap.xml
+
+Patch0:         %{name}-maven-doxia.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -58,20 +61,20 @@ BuildRequires:	maven2-plugin-install
 BuildRequires:	maven2-plugin-jar
 BuildRequires:	maven2-plugin-javadoc
 BuildRequires:	maven2-plugin-plugin
+BuildRequires:  maven2-plugin-release
 BuildRequires:	maven2-plugin-resources
 BuildRequires:	maven2-plugin-surefire
-BuildRequires:  maven2-plugin-release
 BuildRequires:	maven2-common-poms >= 1.0
 BuildRequires:	plexus-appserver >= 1.0-0.a5.3
 BuildRequires:	plexus-cdc >= 1.0-0.a4.2
 BuildRequires:	plexus-container-default
 BuildRequires:	plexus-runtime-builder >= 1.0-0.a9.2
-Requires:		maven2 >= 2.0.4
-Requires:		maven2-common-poms >= 1.0
-Requires:		plexus-appserver >= 1.0-0.a5.3
-Requires:		plexus-cdc >= 1.0-0.a4.2
-Requires:		plexus-container-default
-Requires:		plexus-runtime-builder >= 1.0-0.a9.2
+Requires:	maven2 >= 2.0.4
+Requires:	maven2-common-poms >= 1.0
+Requires:	plexus-appserver >= 1.0-0.a5.3
+Requires:	plexus-cdc >= 1.0-0.a4.2
+Requires:	plexus-container-default
+Requires:	plexus-runtime-builder >= 1.0-0.a9.2
 
 Requires(post):    jpackage-utils >= 0:1.7.2
 Requires(postun):  jpackage-utils >= 0:1.7.2
@@ -92,7 +95,8 @@ Group:          Development/Java
 Javadoc for %{name}.
 
 %prep
-%setup -q -n %{name}
+%setup -q 
+%patch0 -b .sav0
 
 %build
 
@@ -100,11 +104,11 @@ export MAVEN_REPO_LOCAL=$(pwd)/.m2/repository
 mkdir -p $MAVEN_REPO_LOCAL
 
 mvn-jpp \
-        -e \
-		-Dmaven.repo.local=$MAVEN_REPO_LOCAL \
-        install javadoc:javadoc
+       -e \
+       -Dmaven.repo.local=$MAVEN_REPO_LOCAL \
+       -Dmaven2.jpp.depmap.file=%{SOURCE1} \
+       install javadoc:javadoc
 
-#        -Dmaven2.jpp.depmap.file=%{SOURCE1} \
 
 %install
 rm -rf $RPM_BUILD_ROOT
