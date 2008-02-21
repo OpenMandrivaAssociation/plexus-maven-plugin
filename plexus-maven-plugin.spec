@@ -37,7 +37,7 @@
 
 Name:           %{parent}-%{subname}
 Version:        1.3.5
-Release:        %mkrel 1.0.1
+Release:        %mkrel 2.0.1
 Epoch:          0
 Summary:        Plexus Maven plugin
 License:        Apache Software License
