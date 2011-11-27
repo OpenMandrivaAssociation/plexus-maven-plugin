@@ -6,7 +6,7 @@
 
 Name:           %{parent}-%{subname}
 Version:        1.3.8
-Release:        4
+Release:        6
 Summary:        Plexus Maven plugin
 License:        MIT
 Group:          Development/Java
