@@ -2,11 +2,9 @@
 %global parent plexus
 %global subname maven-plugin
 
-%global maven_settings_file %{_builddir}/%{name}/settings.xml
-
 Name:           %{parent}-%{subname}
 Version:        1.3.8
-Release:        6
+Release:        7
 Summary:        Plexus Maven plugin
 License:        MIT
 Group:          Development/Java
@@ -29,7 +27,7 @@ BuildRequires:  maven-jar-plugin
 BuildRequires:  maven-javadoc-plugin
 BuildRequires:  maven-plugin-plugin
 BuildRequires:  maven-resources-plugin
-BuildRequires:  maven-surefire-maven-plugin
+BuildRequires:  maven-surefire-plugin
 BuildRequires:  maven2-common-poms >= 1.0
 BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-surefire-provider-junit
@@ -38,7 +36,7 @@ BuildRequires:  plexus-cdc >= 1.0-0.8.a14
 BuildRequires:  plexus-container-default
 BuildRequires:  plexus-runtime-builder >= 1.0-0.a9.2
 
-Requires:       maven2
+Requires:       maven
 Requires:       maven2-common-poms >= 1.0
 Requires:       plexus-appserver >= 1.0-0.a5.3
 Requires:       plexus-cdc >= 1.0-0.8.a14
