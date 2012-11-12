@@ -1,0 +1,114 @@
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/PlexusComponentsReport.java b/src/main/java/org/codehaus/plexus/maven/plugin/PlexusComponentsReport.java
+index 4485c27..0352977 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/PlexusComponentsReport.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/PlexusComponentsReport.java
+@@ -31,8 +31,8 @@ import java.util.Locale;
+ import org.apache.maven.project.MavenProject;
+ import org.apache.maven.reporting.AbstractMavenReport;
+ import org.apache.maven.reporting.MavenReportException;
+-import org.codehaus.doxia.sink.Sink;
+-import org.codehaus.doxia.site.renderer.SiteRenderer;
++import org.apache.maven.doxia.sink.Sink;
++import org.apache.maven.doxia.siterenderer.Renderer;
+ import org.codehaus.plexus.maven.plugin.report.ComponentSet;
+ import org.jdom.Document;
+ import org.jdom.JDOMException;
+@@ -62,9 +62,9 @@ public class PlexusComponentsReport
+     private MavenProject project;
+ 
+     /**
+-     * @component org.codehaus.doxia.site.renderer.SiteRenderer
++     * @component org.apache.maven.doxia.siterenderer.Renderer
+      */
+-    private SiteRenderer siteRenderer;
++    private Renderer siteRenderer;
+ 
+     /**
+      * @parameter expression="${project.reporting.outputDirectory}
+@@ -114,7 +114,7 @@ public class PlexusComponentsReport
+         return project;
+     }
+ 
+-    protected SiteRenderer getSiteRenderer()
++    protected Renderer getSiteRenderer()
+     {
+         return siteRenderer;
+     }
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/Component.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/Component.java
+index 675d043..ab5a5bf 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/Component.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/Component.java
+@@ -19,7 +19,7 @@ package org.codehaus.plexus.maven.plugin.report;
+ import java.util.Iterator;
+ import java.util.List;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.codehaus.plexus.util.StringUtils;
+ import org.jdom.Element;
+ 
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/ComponentSet.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/ComponentSet.java
+index 167b1df..69c5d02 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/ComponentSet.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/ComponentSet.java
+@@ -17,7 +17,7 @@ package org.codehaus.plexus.maven.plugin.report;
+  */
+ import java.util.List;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.jdom.Element;
+ 
+ /**
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/Components.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/Components.java
+index d865971..aeefa9a 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/Components.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/Components.java
+@@ -25,7 +25,7 @@ import java.util.SortedSet;
+ import java.util.TreeMap;
+ import java.util.TreeSet;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.jdom.Element;
+ 
+ /**
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/Configuration.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/Configuration.java
+index 835c89d..63272d4 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/Configuration.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/Configuration.java
+@@ -24,7 +24,7 @@
+ 
+ package org.codehaus.plexus.maven.plugin.report;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.jdom.Element;
+ 
+ /**
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirement.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirement.java
+index ae29488..c315060 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirement.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirement.java
+@@ -24,7 +24,7 @@
+ 
+ package org.codehaus.plexus.maven.plugin.report;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.codehaus.plexus.util.StringUtils;
+ import org.jdom.Element;
+ 
+diff --git a/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirements.java b/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirements.java
+index d1c06a6..fb7e62a 100644
+--- a/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirements.java
++++ b/src/main/java/org/codehaus/plexus/maven/plugin/report/Requirements.java
+@@ -28,7 +28,7 @@ import java.util.ArrayList;
+ import java.util.Iterator;
+ import java.util.List;
+ 
+-import org.codehaus.doxia.sink.Sink;
++import org.apache.maven.doxia.sink.Sink;
+ import org.jdom.Element;
+ 
+ /**
