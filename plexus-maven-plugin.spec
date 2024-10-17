@@ -8,7 +8,7 @@ Release:        7
 Summary:        Plexus Maven plugin
 License:        MIT
 Group:          Development/Java
-URL:            http://plexus.codehaus.org/
+URL:            https://plexus.codehaus.org/
 
 # svn export \
 #   http://svn.codehaus.org/plexus/archive/plexus-maven-plugin/tags/plexus-maven-plugin-1.3.8
